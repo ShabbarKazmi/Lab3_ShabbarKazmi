@@ -33,7 +33,7 @@ public partial class MainPage : ContentPage
 
     void DeleteEntry(System.Object sender, System.EventArgs e)
     {
-            MEntry selectedEntry = EntriesLV.SelectedItem as Entry;
+            Entry selectedEntry = EntriesLV.SelectedItem as Entry;
         EntryDeletionError entryDeletionError = MauiProgram.ibl.DeleteEntry(selectedEntry.Id);
         if (entryDeletionError != EntryDeletionError.NoError)
         {
