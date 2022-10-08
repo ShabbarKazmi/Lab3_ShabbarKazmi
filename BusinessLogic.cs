@@ -18,7 +18,7 @@ namespace Lab3_ShabbarKazmi
 
         public BusinessLogic()
         {
-            db = new FlatFileDatabase(); // new RelationalDatabase();           // 
+            db = new RelationalDatabase();           // 
         }
 
 
