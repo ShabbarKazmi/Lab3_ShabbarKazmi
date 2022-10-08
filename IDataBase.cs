@@ -9,11 +9,11 @@ namespace Lab3_ShabbarKazmi
 {
     public interface IDatabase
     {
-        void AddEntry(Microsoft.Maui.Controls.Entry entry);
-        bool DeleteEntry(Microsoft.Maui.Controls.Entry entry);
-        Microsoft.Maui.Controls.Entry FindEntry(int id);
-        ObservableCollection<Microsoft.Maui.Controls.Entry> GetEntries();
-        bool EditEntry(Microsoft.Maui.Controls.Entry replacementEntry);
+        void AddEntry(Entry entry);
+        bool DeleteEntry(Entry entry);
+        Entry FindEntry(int id);
+        ObservableCollection<Entry> GetEntries();
+        bool EditEntry(Entry replacementEntry);
     }
 
 }

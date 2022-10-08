@@ -33,7 +33,7 @@ public partial class MainPage : ContentPage
 
     void DeleteEntry(System.Object sender, System.EventArgs e)
     {
-            Microsoft.Maui.Controls.Entry selectedEntry = EntriesLV.SelectedItem as Microsoft.Maui.Controls.Entry;
+            MEntry selectedEntry = EntriesLV.SelectedItem as Entry;
         EntryDeletionError entryDeletionError = MauiProgram.ibl.DeleteEntry(selectedEntry.Id);
         if (entryDeletionError != EntryDeletionError.NoError)
         {
@@ -44,7 +44,7 @@ public partial class MainPage : ContentPage
     void EditEntry(System.Object sender, System.EventArgs e)
     {
 
-            Microsoft.Maui.Controls.Entry selectedEntry = EntriesLV.SelectedItem as Microsoft.Maui.Controls.Entry;
+            Entry selectedEntry = EntriesLV.SelectedItem as Entry;
         selectedEntry.Clue = clueENT.Text;
         selectedEntry.Answer = answerENT.Text;
         selectedEntry.Date = dateENT.Text;
@@ -66,9 +66,9 @@ public partial class MainPage : ContentPage
 
     }
 
-    void EntriesLV_ItemSelected(System.Object sender, Microsoft.Maui.Controls.SelectedItemChangedEventArgs e)
+    void EntriesLV_ItemSelected(System.Object sender, SelectedItemChangedEventArgs e)
     {
-            Microsoft.Maui.Controls.Entry selectedEntry = e.SelectedItem as Microsoft.Maui.Controls.Entry;
+            Entry selectedEntry = e.SelectedItem as Entry;
         clueENT.Text = selectedEntry.Clue;
         answerENT.Text = selectedEntry.Answer;
         difficultyENT.Text = selectedEntry.Difficulty.ToString();

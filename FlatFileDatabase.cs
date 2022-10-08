@@ -23,7 +23,7 @@ namespace Lab3_ShabbarKazmi
         /// What are the costs of that?
         /// There are always tradeoffs in software engineering.
         /// </summary>
-        ObservableCollection<Microsoft.Maui.Controls.Entry> entries = new ObservableCollection<Microsoft.Maui.Controls.Entry>();
+        ObservableCollection<Entry> entries = new ObservableCollection<Entry>();
 
         JsonSerializerOptions options;
 
@@ -43,7 +43,7 @@ namespace Lab3_ShabbarKazmi
         /// Adds an entry to the database
         /// </summary>
         /// <param name="entry">the entry to add</param>
-        public void AddEntry(Microsoft.Maui.Controls.Entry entry)
+        public void AddEntry(Entry entry)
         {
             try
             {
@@ -65,9 +65,9 @@ namespace Lab3_ShabbarKazmi
         /// </summary>
         /// <param name="id">id to find</param>
         /// <returns>the Entry (if available)</returns>
-        public Microsoft.Maui.Controls.Entry FindEntry(int id)
+        public Entry FindEntry(int id)
         {
-            foreach (Microsoft.Maui.Controls.Entry entry in entries)
+            foreach (Entry entry in entries)
             {
                 if (entry.Id == id)
                 {
@@ -82,7 +82,7 @@ namespace Lab3_ShabbarKazmi
         /// </summary>
         /// 
         /// <param name="entry">An entry, which is presumed to exist</param>
-        public bool DeleteEntry(Microsoft.Maui.Controls.Entry entry)
+        public bool DeleteEntry(Entry entry)
         {
             try
             {
@@ -103,9 +103,9 @@ namespace Lab3_ShabbarKazmi
         /// </summary>
         /// <param name="replacementEntry"></param>
         /// <returns>true if editing was successful</returns>
-        public bool EditEntry(Microsoft.Maui.Controls.Entry replacementEntry)
+        public bool EditEntry(Entry replacementEntry)
         {
-            foreach (Microsoft.Maui.Controls.Entry entry in entries) // iterate through entries until we find the Entry in question
+            foreach (Entry entry in entries) // iterate through entries until we find the Entry in question
             {
                 if (entry.Id == replacementEntry.Id) // found it
                 {
@@ -134,19 +134,19 @@ namespace Lab3_ShabbarKazmi
         /// Retrieves all the entries
         /// </summary>
         /// <returns>all of the entries</returns>
-        public ObservableCollection<Microsoft.Maui.Controls.Entry> GetEntries()
+        public ObservableCollection<Entry> GetEntries()
         {
             if (!File.Exists(path))
             {
                 File.CreateText(path);
-                entries = new ObservableCollection<Microsoft.Maui.Controls.Entry>();
+                entries = new ObservableCollection<Entry>();
                 return entries;
             }
 
             string jsonString = File.ReadAllText(path);
             if (jsonString.Length > 0)
             {
-                entries = JsonSerializer.Deserialize<ObservableCollection<Microsoft.Maui.Controls.Entry>>(jsonString);
+                entries = JsonSerializer.Deserialize<ObservableCollection<Entry>>(jsonString);
             }
             return entries;
         }

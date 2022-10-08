@@ -179,10 +179,10 @@ namespace Lab3_ShabbarKazmi
         public String InitializeConnectionString()
         {
             var bitHost = "db.bit.io";
-            var bitApiKey = ""; // from the "Password" field of the "Connect" menu
+            var bitApiKey = "v2_3ufw7_DrRrZnS29BzRiHA6LWhgZa2"; // from the "Password" field of the "Connect" menu
 
-            var bitUser = "";
-            var bitDbName = "";
+            var bitUser = "ShabbarKaz";
+            var bitDbName = "ShabbarKaz/Lab3_ShabbarKazmi";
 
             return connectionString = $"Host={bitHost};Username={bitUser};Password={bitApiKey};Database={bitDbName}";
         }

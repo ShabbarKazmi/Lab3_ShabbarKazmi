@@ -53,6 +53,7 @@ namespace Lab3_ShabbarKazmi
             set { SetProperty(ref id, value); }
         }
 
+        public Entry() { };
         public Entry(String clue, String answer, int difficulty, String date, int id)
         {
             this.clue = clue;

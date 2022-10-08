@@ -14,8 +14,8 @@ namespace Lab3_ShabbarKazmi
         InvalidFieldError AddEntry(string clue, string answer, int difficulty, string date);
         EntryDeletionError DeleteEntry(int entryId);
         EntryEditError EditEntry(string clue, string answer, int difficulty, string date, int id);
-        Microsoft.Maui.Controls.Entry FindEntry(int id);
-        ObservableCollection<Microsoft.Maui.Controls.Entry> GetEntries();
+        Entry FindEntry(int id);
+        ObservableCollection<Entry> GetEntries();
     }
 
 }

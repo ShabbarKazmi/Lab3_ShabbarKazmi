@@ -27,12 +27,12 @@ namespace Lab3_ShabbarKazmi
         /// This also could have been a property
         /// </summary>
         /// <returns>ObservableCollection of entrties</returns>
-        public ObservableCollection<Microsoft.Maui.Controls.Entry> GetEntries()
+        public ObservableCollection<Entry> GetEntries()
         {
             return db.GetEntries();
         }
 
-        public Microsoft.Maui.Controls.Entry FindEntry(int id)
+        public Entry FindEntry(int id)
         {
             return db.FindEntry(id);
         }
@@ -81,7 +81,7 @@ namespace Lab3_ShabbarKazmi
             {
                 return result;
             }
-            Microsoft.Maui.Controls.Entry entry = new Microsoft.Maui.Controls.Entry(clue, answer, difficulty, date, ++latestId);
+            Entry entry = new Entry(clue, answer, difficulty, date, ++latestId);
             db.AddEntry(entry);
 
             return InvalidFieldError.NoError;
@@ -134,7 +134,7 @@ namespace Lab3_ShabbarKazmi
                 return EntryEditError.InvalidFieldError;
             }
 
-            var entry = db.FindEntry(id);
+            Entry entry = db.FindEntry(id);
             entry.Clue = clue;
             entry.Answer = answer;
             entry.Difficulty = difficulty;
