@@ -104,7 +104,7 @@ namespace Lab3_ShabbarKazmi
                 
                 using var con = new NpgsqlConnection();
                 con.Open();
-                var sql = "DELETE FROM Entries WHERE ID = {0)" + entry.Id; // don't hardcode,
+                var sql = "DELETE FROM Entries WHERE ID = " + entry.Id; // don't hardcode,
                                                                  //and don't use unsanitized user input, instead ...
                 using var cmd = new NpgsqlCommand(sql, con);
                 int numRowsAffected = cmd.ExecuteNonQuery();
