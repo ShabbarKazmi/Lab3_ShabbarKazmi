@@ -145,26 +145,15 @@ namespace Lab3_ShabbarKazmi
                         using var con = new NpgsqlConnection(connectionString);
                         con.Open();
 
-                       
-                         var sql = "UPDATE entries SET Clue = " + replacementEntry.Clue + " ," +
-                            " Answer = " + replacementEntry.Answer + " ," +
-                            " Difficulty = " + replacementEntry.Difficulty + " ," +
-                            " Date = " + replacementEntry.Date +
-                            " WHERE ID = " + replacementEntry.Id;  // something is up here 
-                       
-
-                       // var sql = "Update Set entries (Clue, Answer, Difficulty,Date,ID) VALUES(@Clue, @Answer, @Difficulty, @Date,@ID)";
+                        var sql = "UPDATE Entries SET clue = @clue, answer = @answer, difficulty = @difficulty, date = @date WHERE id = @id";
                         using var cmd = new NpgsqlCommand(sql, con);
-
-                        // don't hardcode,
-
-
-                        //and don't use unsanitized user input, instead ...
-
+                        cmd.Parameters.AddWithValue("clue", entry.Clue);
+                        cmd.Parameters.AddWithValue("answer", entry.Answer);
+                        cmd.Parameters.AddWithValue("difficulty", entry.Difficulty);
+                        cmd.Parameters.AddWithValue("date", entry.Date);
                         int numRowsAffected = cmd.ExecuteNonQuery();
-                        Console.WriteLine($"The # of rows Edited was {numRowsAffected}");
+                        Console.WriteLine($"The # of rows inserted was {numRowsAffected}");
                         con.Close();
-
 
 
 

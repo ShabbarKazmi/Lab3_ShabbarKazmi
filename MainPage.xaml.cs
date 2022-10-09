@@ -37,7 +37,7 @@ public partial class MainPage : ContentPage
     {
             Entry selectedEntry = EntriesLV.SelectedItem as Entry;
 
-            if (MauiProgram.ibl.IsEntrySelected(selectedEntry))
+            if (!MauiProgram.ibl.IsEntrySelected(selectedEntry))
             {
                  DisplayAlert("An error has occurred while deleting an entry","No Entry Selected, Please Select Enrty", "OK");
                 return;
@@ -55,7 +55,7 @@ public partial class MainPage : ContentPage
 
             Entry selectedEntry = EntriesLV.SelectedItem as Entry;
 
-            if (MauiProgram.ibl.IsEntrySelected(selectedEntry))
+            if (!MauiProgram.ibl.IsEntrySelected(selectedEntry))
             {
                 DisplayAlert("An error has occurred while editing an entry", "No Entry Selected, Please Select Enrty", "OK");
                 return; 
