@@ -12,6 +12,8 @@ namespace Lab3_ShabbarKazmi
     public interface IBusinessLogic
     {
         InvalidFieldError AddEntry(string clue, string answer, int difficulty, string date);
+
+        Boolean IsEntrySelected(Entry entry);
         EntryDeletionError DeleteEntry(int entryId);
         EntryEditError EditEntry(string clue, string answer, int difficulty, string date, int id);
         Entry FindEntry(int id);

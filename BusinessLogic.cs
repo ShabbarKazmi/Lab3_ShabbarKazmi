@@ -95,6 +95,7 @@ namespace Lab3_ShabbarKazmi
         public EntryDeletionError DeleteEntry(int entryId)
         {
 
+        
             var entry = db.FindEntry(entryId);
 
             if (entry != null)
@@ -114,6 +115,18 @@ namespace Lab3_ShabbarKazmi
             {
                 return EntryDeletionError.EntryNotFound;
             }
+        }
+
+        
+        public bool IsEntrySelected(Entry entry)
+        {
+            
+                if (entry is not null)
+                {
+                    return true;
+                }
+            
+            return true;
         }
 
         /// <summary>

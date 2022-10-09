@@ -1,4 +1,6 @@
-﻿namespace Lab3_ShabbarKazmi { 
+﻿using System.Data.Common;
+
+namespace Lab3_ShabbarKazmi { 
 
 public partial class MainPage : ContentPage
 {
@@ -34,6 +36,13 @@ public partial class MainPage : ContentPage
     void DeleteEntry(System.Object sender, System.EventArgs e)
     {
             Entry selectedEntry = EntriesLV.SelectedItem as Entry;
+
+            if (MauiProgram.ibl.IsEntrySelected(selectedEntry))
+            {
+                 DisplayAlert("An error has occurred while deleting an entry","No Entry Selected, Please Select Enrty", "OK");
+                return;
+            }
+
         EntryDeletionError entryDeletionError = MauiProgram.ibl.DeleteEntry(selectedEntry.Id);
         if (entryDeletionError != EntryDeletionError.NoError)
         {
@@ -45,7 +54,14 @@ public partial class MainPage : ContentPage
     {
 
             Entry selectedEntry = EntriesLV.SelectedItem as Entry;
-        selectedEntry.Clue = clueENT.Text;
+
+            if (MauiProgram.ibl.IsEntrySelected(selectedEntry))
+            {
+                DisplayAlert("An error has occurred while editing an entry", "No Entry Selected, Please Select Enrty", "OK");
+                return; 
+            }
+
+            selectedEntry.Clue = clueENT.Text;
         selectedEntry.Answer = answerENT.Text;
         selectedEntry.Date = dateENT.Text;
 

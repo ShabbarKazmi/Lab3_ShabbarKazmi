@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Text.Json;
 using Npgsql;
 
@@ -48,14 +49,14 @@ namespace Lab3_ShabbarKazmi
                 entry.Id = entries.Count + 1;
                 entries.Add(entry);
 
-                using var con = new NpgsqlConnection();
+                using var con = new NpgsqlConnection(connectionString);
                 con.Open();
 
-                var sql = "INSERT INTO Books (title, author, isbn) VALUES(@title, @author, @isbn)";
+                var sql = "INSERT INTO entries (Clue, Answer, Difficulty,Date,ID) VALUES(@Clue, @Answer, @Difficulty, @Date,@ID)";
                 using var cmd = new NpgsqlCommand(sql, con);
 
                 cmd.Parameters.AddWithValue("Clue", entry.Clue);
-                cmd.Parameters.AddWithValue("Anser",entry.Answer );
+                cmd.Parameters.AddWithValue("Answer",entry.Answer );
                 cmd.Parameters.AddWithValue("Difficulty", entry.Difficulty);
                 cmd.Parameters.AddWithValue("Date", entry.Difficulty);
                 cmd.Parameters.AddWithValue("ID", entry.Id);
@@ -102,7 +103,7 @@ namespace Lab3_ShabbarKazmi
                 var result = entries.Remove(entry);
                 
                 
-                using var con = new NpgsqlConnection();
+                using var con = new NpgsqlConnection(connectionString);
                 con.Open();
                 var sql = "DELETE FROM Entries WHERE ID = " + entry.Id; // don't hardcode,
                                                                  //and don't use unsanitized user input, instead ...
@@ -141,13 +142,27 @@ namespace Lab3_ShabbarKazmi
                     try
                     {
 
-                        using var con = new NpgsqlConnection();
+                        using var con = new NpgsqlConnection(connectionString);
                         con.Open();
-                        var sql = "DELETE FROM Entries WHERE ID =" + entry.Id; // don't hardcode,
-                                                                             //and don't use unsanitized user input, instead ...
+
+                       
+                         var sql = "UPDATE entries SET Clue = " + replacementEntry.Clue + " ," +
+                            " Answer = " + replacementEntry.Answer + " ," +
+                            " Difficulty = " + replacementEntry.Difficulty + " ," +
+                            " Date = " + replacementEntry.Date +
+                            " WHERE ID = " + replacementEntry.Id;  // something is up here 
+                       
+
+                       // var sql = "Update Set entries (Clue, Answer, Difficulty,Date,ID) VALUES(@Clue, @Answer, @Difficulty, @Date,@ID)";
                         using var cmd = new NpgsqlCommand(sql, con);
+
+                        // don't hardcode,
+
+
+                        //and don't use unsanitized user input, instead ...
+
                         int numRowsAffected = cmd.ExecuteNonQuery();
-                        Console.WriteLine($"The # of rows deleted was {numRowsAffected}");
+                        Console.WriteLine($"The # of rows Edited was {numRowsAffected}");
                         con.Close();
 
 
