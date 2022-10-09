@@ -48,7 +48,21 @@ namespace Lab3_ShabbarKazmi
                 entry.Id = entries.Count + 1;
                 entries.Add(entry);
 
-                // write the SQL to INSERT entry into bit.io
+                using var con = new NpgsqlConnection();
+                con.Open();
+
+                var sql = "INSERT INTO Books (title, author, isbn) VALUES(@title, @author, @isbn)";
+                using var cmd = new NpgsqlCommand(sql, con);
+
+                cmd.Parameters.AddWithValue("Clue", entry.Clue);
+                cmd.Parameters.AddWithValue("Anser",entry.Answer );
+                cmd.Parameters.AddWithValue("Difficulty", entry.Difficulty);
+                cmd.Parameters.AddWithValue("Date", entry.Difficulty);
+                cmd.Parameters.AddWithValue("ID", entry.Id);
+                int numRowsAffected = cmd.ExecuteNonQuery();
+                Console.WriteLine($"The # of rows inserted was {numRowsAffected}");
+                con.Close();
+            
 
 
             }
@@ -86,9 +100,16 @@ namespace Lab3_ShabbarKazmi
             try
             {
                 var result = entries.Remove(entry);
-
-
-                // Write the SQL to DELETE entry from bit.io. You have its id, that should be all that you need
+                
+                
+                using var con = new NpgsqlConnection();
+                con.Open();
+                var sql = "DELETE FROM Entries WHERE ID = {0)",entry.ID"; // don't hardcode,
+                                                                 //and don't use unsanitized user input, instead ...
+                using var cmd = new NpgsqlCommand(sql, con);
+                int numRowsAffected = cmd.ExecuteNonQuery();
+                Console.WriteLine($"The # of rows deleted was {numRowsAffected}");
+                con.Close();
 
 
 
@@ -119,7 +140,18 @@ namespace Lab3_ShabbarKazmi
 
                     try
                     {
-                        /// write the SQL to UPDATE the entry. Again, you have its id, which should be all you need.
+
+                        using var con = new NpgsqlConnection();
+                        con.Open();
+                        var sql = "DELETE FROM Entries WHERE ID =" + entry.Id; // don't hardcode,
+                                                                             //and don't use unsanitized user input, instead ...
+                        using var cmd = new NpgsqlCommand(sql, con);
+                        int numRowsAffected = cmd.ExecuteNonQuery();
+                        Console.WriteLine($"The # of rows deleted was {numRowsAffected}");
+                        con.Close();
+
+
+
 
                         return true;
                     }
