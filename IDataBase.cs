@@ -10,10 +10,14 @@ namespace Lab3_ShabbarKazmi
     public interface IDatabase
     {
         void AddEntry(Entry entry);
+
+        void SortEntries();
         bool DeleteEntry(Entry entry);
         Entry FindEntry(int id);
         ObservableCollection<Entry> GetEntries();
         bool EditEntry(Entry replacementEntry);
+
+        
     }
 
 }

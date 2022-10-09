@@ -11,14 +11,14 @@ namespace Lab3_ShabbarKazmi
     {
         const int MAX_CLUE_LENGTH = 250;
         const int MAX_ANSWER_LENGTH = 21;
-        const int MAX_DIFFICULTY = 5;
+        const int MAX_DIFFICULTY = 2;
         int latestId = 0;
 
         IDatabase db;                     // the actual database that does the hardwork
 
         public BusinessLogic()
         {
-            db = new RelationalDatabase();           // 
+            db = new RelationalDatabase();           
         }
 
 
@@ -36,6 +36,14 @@ namespace Lab3_ShabbarKazmi
         {
             return db.FindEntry(id);
         }
+
+
+        public void SortEntries()
+        {
+            db.SortEntries();
+        }
+
+
 
         /// <summary>
         /// Verifies that all the entry fields are valied
@@ -56,7 +64,7 @@ namespace Lab3_ShabbarKazmi
             {
                 return InvalidFieldError.InvalidAnswerLength;
             }
-            if (difficulty < 0 || difficulty > MAX_DIFFICULTY)
+            if (difficulty <= 0 || difficulty > MAX_DIFFICULTY)
             {
                 return InvalidFieldError.InvalidDifficulty;
             }
@@ -116,6 +124,9 @@ namespace Lab3_ShabbarKazmi
                 return EntryDeletionError.EntryNotFound;
             }
         }
+
+
+    
 
         
         public bool IsEntrySelected(Entry entry)

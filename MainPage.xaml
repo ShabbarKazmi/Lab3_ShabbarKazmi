@@ -24,6 +24,8 @@
                 <Button Text="Add Entry" Clicked="AddEntry" Margin="20"/>
                 <Button Text="Delete Entry" Clicked="DeleteEntry" Margin="20"/>
                 <Button Text="Edit Entry" Clicked="EditEntry" Margin="25"/>
+                <Button Text="Sort Entries" Clicked="SortEntries" Margin="25"/>
+                
 
             </VerticalStackLayout>
 

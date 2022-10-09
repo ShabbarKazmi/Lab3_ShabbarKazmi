@@ -82,6 +82,13 @@ public partial class MainPage : ContentPage
 
     }
 
+
+        public void SortEntries(System.Object sender, System.EventArgs e)
+        {
+            MauiProgram.ibl.SortEntries();
+            EntriesLV.ItemsSource = MauiProgram.ibl.GetEntries();
+        }
+
     void EntriesLV_ItemSelected(System.Object sender, SelectedItemChangedEventArgs e)
     {
             Entry selectedEntry = e.SelectedItem as Entry;

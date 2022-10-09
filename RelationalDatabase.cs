@@ -91,6 +91,20 @@ namespace Lab3_ShabbarKazmi
             return null;
         }
 
+        
+        public void SortEntries()
+        {
+
+            using var con = new NpgsqlConnection(connectionString);
+            con.Open();
+            String sql = "SELECT * FROM entries ORDER BY clue";
+            using var sqlCommand = new NpgsqlCommand(sql, con);
+           int numRowsAffected = sqlCommand.ExecuteNonQuery();
+            con.Close();
+
+        }
+
+
         /// <summary>
         /// Deletes an entry 
         /// </summary>
@@ -222,5 +236,6 @@ namespace Lab3_ShabbarKazmi
 
             return connectionString = $"Host={bitHost};Username={bitUser};Password={bitApiKey};Database={bitDbName}";
         }
+
     }
 }
