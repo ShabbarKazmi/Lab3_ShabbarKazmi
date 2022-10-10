@@ -38,9 +38,9 @@ namespace Lab3_ShabbarKazmi
         }
 
 
-        public void SortEntries()
+        public ObservableCollection<Entry> SortEntriesBL()
         {
-            db.SortEntries();
+           return db.SortDatabaseEntries();
         }
 
 

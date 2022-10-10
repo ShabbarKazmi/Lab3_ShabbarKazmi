@@ -70,20 +70,22 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Grid.Row="0" Grid.Column="0" Text="Clue:" VerticalOptions="Center" />
-                <Entry Grid.Row="0" Grid.Column="1" Text="Ring Highlight?" Placeholder="Clue goes here" x:Name="clueENT"/>
+                <Entry Grid.Row="0" Grid.Column="1" Text="Ring Highlight?" Placeholder="Clue goes here" x:Name="clueENT" VerticalTextAlignment="Center"/>
 
                 <Label Grid.Row="1" Grid.Column="0" Text="Answer:" VerticalTextAlignment="Center"/>
-                <Entry Grid.Row="1" Grid.Column="1" Text="JEWEL" Placeholder="answer goes here" x:Name="answerENT"/>
+                <Entry Grid.Row="1" Grid.Column="1" Text="JEWEL" Placeholder="answer goes here" x:Name="answerENT" VerticalTextAlignment="Center"/>
 
                 <HorizontalStackLayout Grid.Row="2" Grid.Column="0">
                     <Label Text="Difficulty:    " VerticalTextAlignment="Center"/>
-                    <Entry  Text="2" Placeholder="Difficulty goes here" x:Name="difficultyENT"/>
+                    <Entry  Text="2" Placeholder="Difficulty goes here" x:Name="difficultyENT" VerticalTextAlignment="Center"/>
 
                     <Label Text="Date:" Grid.Row="3" Grid.Column="0" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
-                    <Entry Grid.Row="5" Grid.Column="1" Text="10/01/2022" Placeholder="Date goes here" x:Name="dateENT"/>
+                    <Entry Grid.Row="5" Grid.Column="1" Text="10/01/2022" Placeholder="Date goes here" x:Name="dateENT" VerticalTextAlignment="Center"/>
                 </HorizontalStackLayout>
             </Grid>
         </Grid>
     </ScrollView>
 
 </ContentPage>
+    
+

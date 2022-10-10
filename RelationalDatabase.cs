@@ -92,15 +92,42 @@ namespace Lab3_ShabbarKazmi
         }
 
         
-        public void SortEntries()
+        public ObservableCollection<Entry> SortDatabaseEntries()
         {
+            while (entries.Count > 0)
+            {
+                entries.RemoveAt(0);
+            }
 
             using var con = new NpgsqlConnection(connectionString);
             con.Open();
-            String sql = "SELECT * FROM entries ORDER BY clue";
-            using var sqlCommand = new NpgsqlCommand(sql, con);
-           int numRowsAffected = sqlCommand.ExecuteNonQuery();
+
+            var sql = "SELECT * FROM \"entries\" ORDER BY clue limit 10;";
+
+            using var cmd = new NpgsqlCommand(sql, con);
+
+            using NpgsqlDataReader reader = cmd.ExecuteReader();
+
+            // Columns are clue, answer, difficulty, date, id in that order ...
+            // Show all data
+            while (reader.Read())
+            {
+                for (int colNum = 0; colNum < reader.FieldCount; colNum++)
+                {
+                    Console.Write(reader.GetName(colNum) + "=" + reader[colNum] + " ");
+                }
+                Console.Write("\n");
+                entries.Add(new Entry(reader[0] as String, reader[1] as String, (int)reader[2], reader[3] as String, (int)reader[4]));
+            }
+
             con.Close();
+
+
+
+            return entries;
+
+
+
 
         }
 

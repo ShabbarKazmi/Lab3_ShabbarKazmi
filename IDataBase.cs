@@ -11,7 +11,7 @@ namespace Lab3_ShabbarKazmi
     {
         void AddEntry(Entry entry);
 
-        void SortEntries();
+        ObservableCollection<Entry> SortDatabaseEntries();
         bool DeleteEntry(Entry entry);
         Entry FindEntry(int id);
         ObservableCollection<Entry> GetEntries();
