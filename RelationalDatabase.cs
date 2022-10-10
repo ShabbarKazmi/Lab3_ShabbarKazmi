@@ -92,8 +92,9 @@ namespace Lab3_ShabbarKazmi
         }
 
         
-        public ObservableCollection<Entry> SortDatabaseEntries()
+        public ObservableCollection<Entry> SortDatabaseEntries(String SortFilter)
         {
+
             while (entries.Count > 0)
             {
                 entries.RemoveAt(0);
@@ -102,7 +103,16 @@ namespace Lab3_ShabbarKazmi
             using var con = new NpgsqlConnection(connectionString);
             con.Open();
 
-            var sql = "SELECT * FROM \"entries\" ORDER BY clue limit 10;";
+            var sql = "";
+
+            if (SortFilter.Equals("Clue"))
+            {
+                 sql = "SELECT * FROM \"entries\" ORDER BY clue;";
+            }
+            else 
+            {
+                sql = "SELECT * FROM \"entries\" ORDER BY answer;";
+            }
 
             using var cmd = new NpgsqlCommand(sql, con);
 
@@ -125,9 +135,6 @@ namespace Lab3_ShabbarKazmi
 
 
             return entries;
-
-
-
 
         }
 

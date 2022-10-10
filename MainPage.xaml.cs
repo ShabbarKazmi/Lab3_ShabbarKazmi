@@ -83,13 +83,17 @@ public partial class MainPage : ContentPage
     }
 
 
-        public void SortEntries(System.Object sender, System.EventArgs e)
+        public void SortEntriesByClue(System.Object sender, System.EventArgs e)
         {
-            MauiProgram.ibl.SortEntriesBL();
-            EntriesLV.ItemsSource = MauiProgram.ibl.SortEntriesBL();
+            EntriesLV.ItemsSource = MauiProgram.ibl.SortByClue();
         }
 
-    void EntriesLV_ItemSelected(System.Object sender, SelectedItemChangedEventArgs e)
+        public void SortEntriesByAnswer(System.Object sender, System.EventArgs e)
+        {
+            EntriesLV.ItemsSource = MauiProgram.ibl.SortByAnswer();
+        }
+
+        void EntriesLV_ItemSelected(System.Object sender, SelectedItemChangedEventArgs e)
     {
             Entry selectedEntry = e.SelectedItem as Entry;
         clueENT.Text = selectedEntry.Clue;

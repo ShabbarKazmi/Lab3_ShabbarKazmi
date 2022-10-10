@@ -38,9 +38,14 @@ namespace Lab3_ShabbarKazmi
         }
 
 
-        public ObservableCollection<Entry> SortEntriesBL()
+        public ObservableCollection<Entry> SortByClue()
         {
-           return db.SortDatabaseEntries();
+           return db.SortDatabaseEntries("Clue");
+        }
+
+        public ObservableCollection<Entry> SortByAnswer()
+        {
+            return db.SortDatabaseEntries("Answer");
         }
 
 

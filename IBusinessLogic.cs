@@ -13,7 +13,8 @@ namespace Lab3_ShabbarKazmi
     {
         InvalidFieldError AddEntry(string clue, string answer, int difficulty, string date);
 
-        ObservableCollection<Entry> SortEntriesBL();
+        ObservableCollection<Entry> SortByClue();
+        ObservableCollection<Entry> SortByAnswer();
 
         Boolean IsEntrySelected(Entry entry);
         EntryDeletionError DeleteEntry(int entryId);
